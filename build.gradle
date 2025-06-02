@@ -33,5 +33,5 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    System.setProperty("webdriver.chrome.binary", "C:\\WebDrivers\\chrome-win64\\chrome.exe");
+    System.setProperty("webdriver.chrome.binary", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 }
