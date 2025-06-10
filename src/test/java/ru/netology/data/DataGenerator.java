@@ -1,49 +1,66 @@
 package ru.netology.data;
 
-
+import com.github.javafaker.Address;
 import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
+import lombok.Value;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
 public class DataGenerator {
 
-    private static final Faker faker = new Faker(new Locale("ru"));
-
-    public static UserInfo generateUser() {
-        return new UserInfo(
-                faker.name().fullName(),
-                faker.phoneNumber().phoneNumber(),
-                faker.address().city()
-        );
+    DataGenerator() {
     }
 
-    public static class UserInfo {
-        private final String name;
-        private final String phone;
-        private final String city;
-
-        public UserInfo(String name, String phone, String city) {
-            this.name = name;
-            this.phone = phone;
-            this.city = city;
-        }
-
-        // Getters
-        public String getName() { return name; }
-        public String getPhone() { return phone; }
-        public String getCity() { return city; }
+    public static String generateDate(int days, String pattern) {
+        String date = LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern(pattern));
+        return date;
     }
 
     public static String generateCity() {
 
-        String[] cities = new String[]{"Пермь", "Ижевск", "Екатеринбург", "Казань", "Оренбург",
+        String [] cities = new String[] {"Пермь", "Ижевск", "Екатеринбург", "Казань", "Оренбург",
                 "Самара", "Тольятти", "Новосибирск", "Барнаул", "Киров", "Тюмень"};
 
         return cities[new Random().nextInt(cities.length)];
+
+//        Faker faker = new Faker(Locale.forLanguageTag("ru"));
+//        String city = faker.address().city();
+//
+//        return city;
     }
 
+    public static String generateName() {
+        Faker faker = new Faker(Locale.forLanguageTag("ru"));
+        String lastName = faker.name().lastName();
+        String firstName = faker.name().firstName();
+        String name = (lastName + " " + firstName);
+        return name;
+    }
 
+    public static String generatePhone() {
+        Faker faker = new Faker(Locale.forLanguageTag("ru"));
+        String phone = faker.phoneNumber().phoneNumber();
+        return phone;
+    }
 
+    public static class Registration {
+        private Registration() {
+        }
 
+        public static UserInfo generateUser() {
+            UserInfo user = new UserInfo(generateCity(), generateName(), generatePhone());
+            return user;
+        }
+    }
 
+    @Value
+    public static class UserInfo {
+        String city;
+        String name;
+        String phone;
+    }
 }

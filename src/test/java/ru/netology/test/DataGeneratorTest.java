@@ -3,8 +3,9 @@ package ru.netology.test;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.logevents.SelenideLogger;
-
+import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
+import lombok.val;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,9 +39,8 @@ class DataGeneratorTest {
     @Test
     @DisplayName("Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
-
-        var user = DataGenerator.generateUser();
-        var validUser = DataGenerator.generateUser();
+        var user = DataGenerator.Registration.generateUser();
+        var validUser = DataGenerator.Registration.generateUser();
         var daysToAddForFirstMeeting = 4;
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting, "dd.MM.yyyy");
         var daysToAddForSecondMeeting = 7;
