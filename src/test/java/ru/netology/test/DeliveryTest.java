@@ -38,7 +38,7 @@ class DataGeneratorTest {
     @Test
     @DisplayName("Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
-//        var - только для локальных переменных, если попытаться задать переменную в этом классе, то нужно будет тип данных задавать в ручную
+
         var user = DataGenerator.Registration.generateUser();
         var validUser = DataGenerator.Registration.generateUser();
         var daysToAddForFirstMeeting = 4;
