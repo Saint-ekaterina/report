@@ -39,8 +39,8 @@ class DataGeneratorTest {
     @DisplayName("Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
 
-        var user = DataGenerator.Registration.generateUser();
-        var validUser = DataGenerator.Registration.generateUser();
+        var user = DataGenerator.generateUser();
+        var validUser = DataGenerator.generateUser();
         var daysToAddForFirstMeeting = 4;
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting, "dd.MM.yyyy");
         var daysToAddForSecondMeeting = 7;
