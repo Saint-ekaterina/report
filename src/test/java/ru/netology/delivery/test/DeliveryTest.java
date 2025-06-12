@@ -13,9 +13,19 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
+
 
 
 class DeliveryTest {
+
+    @BeforeAll
+    public static void setup() {
+        Configuration.browser = "chrome";
+        Configuration.browserBinary = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+        System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
+    }
+}
 
     @BeforeAll
     static void setupAll() {
@@ -26,9 +36,6 @@ class DeliveryTest {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
-
-    Configuration.browser = "chrome";
-    Configuration.browserBinary = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
     @BeforeEach
     void setup() {
