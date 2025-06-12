@@ -12,6 +12,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import com.codeborne.selenide.Configuration;
+
 
 class DeliveryTest {
 
@@ -24,6 +26,9 @@ class DeliveryTest {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+
+    Configuration.browser = "chrome";
+    Configuration.browserBinary = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
     @BeforeEach
     void setup() {
