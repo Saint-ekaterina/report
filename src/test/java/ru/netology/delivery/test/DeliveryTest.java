@@ -14,10 +14,13 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 
-class DeliveryTest {
+abstract class DeliveryTest {
+
+    WebDriverManager.chromedriver().abstract setup();
 
     @BeforeAll
     public static void setup() {
